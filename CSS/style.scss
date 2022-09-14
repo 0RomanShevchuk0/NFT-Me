@@ -1567,3 +1567,156 @@ body.locked{
 		}
 	}
 }
+
+//* Footer
+.footer {
+
+	&__main {
+		display: flex;
+		justify-content: space-between;
+		padding: clamp(1.25rem, -2.108rem + 6.98vw, 3.125rem) 0px;
+	}
+
+	&__nav {
+		display: flex;
+		align-items: center;
+	}
+
+	&__logo {
+		width: 80px;
+		height: 80px;
+		margin-right: 10px;
+		cursor: pointer;
+	}
+
+	&__list {
+		display: flex;
+	}
+
+	&__nav-link {
+		display: block;
+		font-family: 'Source Sans Pro';
+		font-style: normal;
+		font-weight: 400;
+		font-size: 18px;
+		line-height: 20px;
+		letter-spacing: 1px;
+		color: #FFFFFF;
+		text-decoration: none;
+		margin-left: 40px;
+		cursor: pointer;
+		transition: 0.4s;
+
+		&:hover{
+			transform: translate(0, -5px);
+		}
+	}
+
+	&__socials {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	&__social {
+		width: 50px;
+		height: 50px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background: rgba(196, 196, 196, 0.2);
+		border: 1px solid rgba(229, 229, 229, 0.3);
+		margin-left: 15px;
+		cursor: pointer;
+		transition: 0.4s;
+
+		&:hover{
+			transform: translate(0, -5px);
+		}
+	}
+
+	&__info {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding: clamp(1.25rem, -2.108rem + 6.98vw, 3.125rem) 0px;
+		border-top: 1px solid rgba(229, 229, 229, 0.3);;
+	}
+
+	&__info-link {
+		display: block;
+		font-family: 'Source Sans Pro';
+		font-style: normal;
+		font-weight: 400;
+		font-size: 16px;
+		line-height: 20px;
+		text-align: center;
+		letter-spacing: 1px;
+		color: #FFFFFF;
+		text-decoration: none;
+		cursor: pointer;
+		padding: 0px 10px;
+		transition: 0.4s;
+		position: relative;
+
+		&:hover{
+			color: #C4C4C4;
+		}
+		&:not(:last-child)::after{
+			content: '';
+			position: absolute;
+			height: 100%;
+			width: 1px;
+			background: #fff;
+			top: 0;
+			right: 0;
+		}
+	}
+}
+@media(max-width: 768px){
+	.footer{
+		&__main {
+			flex-direction: column;
+		}
+		&__nav{
+			flex-direction: column;
+		}
+		&__nav-link{
+			margin: 20px;
+
+			&:hover{
+				transform: none;
+			}
+		}
+		&__social{
+			&:hover{
+				transform: none;
+			}
+		}
+		
+		&__info-link{
+			font-size: clamp(0.563rem, 0.042rem + 1.74vw, 0.875rem);
+
+			&:not(:last-child)::after{
+				height: 80%;
+				top: 10%;
+			}
+			&:hover{
+				color: #fff;
+			}
+		}
+	}
+}
+@media(max-width: 480px){
+	.footer{
+		&__info-link{
+			font-size: clamp(0.375rem, -0.25rem + 3.13vw, 0.688rem);
+			padding: 0px 4px;
+	
+			&:not(:last-child)::after{
+				height: 60%;
+				top: 15%;
+			}
+		}
+	}
+}

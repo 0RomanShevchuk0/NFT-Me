@@ -1,6 +1,7 @@
 //* Logo page reload
 document.querySelector('#navbar__logo').addEventListener('click', () => location.reload());
 document.querySelector('#navbar__logo-mb').addEventListener('click', () => location.reload());
+document.querySelector('#footer__logo').addEventListener('click', () => location.reload());
 
 //* Burger
 const burger = document.querySelector('#burger');
