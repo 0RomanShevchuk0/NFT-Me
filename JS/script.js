@@ -9,13 +9,15 @@ const links = document.querySelector('#navbar__links');
 const body = document.querySelector('body');
 
 document.querySelector('#burger').addEventListener('click', () => {
-	burger.classList.toggle('active');
-	links.classList.toggle('active');
-	body.classList.toggle('locked');
+	if(window.innerWidth < 768){
+		burger.classList.toggle('active');
+		links.classList.toggle('active');
+		body.classList.toggle('locked');
+	}
 })
 
 const anchors = document.querySelectorAll('.anchor');
-if(anchors.length > 0){
+if(anchors.length > 0 && window.innerWidth < 768){
 	anchors.forEach((anchor) => {
 		anchor.addEventListener('click', () => {
 			burger.classList.toggle('active');
@@ -24,6 +26,24 @@ if(anchors.length > 0){
 		})
 	})
 }
+
+anchors.forEach( anchor => {
+	anchor.addEventListener('click', function(e) {
+		e.preventDefault();
+
+		const href = this.getAttribute('href');
+		const scrollTarget = document.querySelector(href);
+		const topOffset = 100;
+		const elementPosition = scrollTarget.getBoundingClientRect().top;
+		const offsetPosition = elementPosition - topOffset;
+		
+		window.scrollBy({
+			top: offsetPosition,
+			behavior: 'smooth'
+		})
+	})
+})
+
 
 //* Navbar on scroll
 const navbar = document.querySelector('#navbar');
@@ -40,3 +60,34 @@ ThirdSpan.textContent = ThirdSpan.textContent.split('').reverse().join('');
 let FourthSpan = document.querySelector('.square-button__fourth-span');
 FourthSpan.textContent = FourthSpan.textContent.split('').reverse().join('');
 
+
+//* Scroll animations
+const animItems = document.querySelectorAll('.anim-item');
+
+if(animItems.length > 0){
+
+	window.addEventListener('scroll', animOnScroll);
+
+	function animOnScroll(){
+		animItems.forEach((animItem) => {
+			const animItemOffset = offset(animItem);
+			const animItemHeight = animItem.offsetHeight;
+			const animStart = 4;
+
+			let animItemPoint = window.innerHeight - animItemHeight / animStart;
+
+			if((scrollY > animItemOffset - animItemPoint) && scrollY < animItemOffset + animItemHeight){
+				animItem.classList.add('_active');
+			}
+			else{
+				animItem.classList.remove('_active');
+			}
+		})
+	}
+	animOnScroll();
+
+	function offset(el){
+		const rect = el.getBoundingClientRect();
+		return rect.top + window.scrollY;
+	}
+}
