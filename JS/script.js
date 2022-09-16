@@ -93,7 +93,7 @@ if(animItems.length > 0){
 let buttonToTop = document.querySelector('#button-to-top');
 buttonToTop.addEventListener('click', () => {
     window.scrollBy({
-        top: -10000,
+        top: -20000,
         behavior: 'smooth'})
 })
 
