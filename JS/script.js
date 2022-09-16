@@ -91,3 +91,20 @@ if(animItems.length > 0){
 		return rect.top + window.scrollY;
 	}
 }
+
+//* To top button
+let buttonToTop = document.querySelector('#button-to-top');
+buttonToTop.addEventListener('click', () => {
+    window.scrollBy({
+        top: -10000,
+        behavior: 'smooth'})
+})
+
+window.addEventListener('scroll', function(){
+    if(window.scrollY > 80){
+        buttonToTop.classList.add('active');
+    }
+    else{
+        buttonToTop.classList.remove('active');
+    }
+})
