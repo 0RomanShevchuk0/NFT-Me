@@ -79,9 +79,6 @@ if(animItems.length > 0){
 			if((scrollY > animItemOffset - animItemPoint) && scrollY < animItemOffset + animItemHeight){
 				animItem.classList.add('_active');
 			}
-			else{
-				animItem.classList.remove('_active');
-			}
 		})
 	}
 	animOnScroll();
